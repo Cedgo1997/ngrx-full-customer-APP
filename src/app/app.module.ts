@@ -1,22 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+// COMPONENTS
 import { AppComponent } from './app.component';
-import { StoreModule } from '@ngrx/store';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
+// MODULES
+import { AppRoutingModule } from './app-routing.module';
+import { CustomersModule } from './customers/customers.module';
+
+// NGRX
+import { StoreModule } from '@ngrx/store';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    NavbarComponent
-  ],
+  declarations: [AppComponent, HomeComponent, NavbarComponent],
   imports: [
     BrowserModule,
-    StoreModule.forRoot({})
+    CustomersModule,
+    AppRoutingModule,
+    StoreModule.forRoot({}),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
