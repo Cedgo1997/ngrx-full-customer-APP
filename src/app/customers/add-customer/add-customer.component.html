@@ -1,1 +1,43 @@
-<p>add-customer works!</p>
+<h3>Add Customer</h3>
+
+<form class="corm-inline mb-4">
+  <label for="Name" class="sr-only">Name</label>
+  <div class="input-group mb-2 mr-sm-2">
+    <input
+      type="text"
+      class="form-control"
+      formControlName="name"
+      placeholder="Name"
+    />
+  </div>
+
+  <label for="Phone" class="sr-only">Phone</label>
+  <div class="input-group mb-2 mr-sm-2">
+    <input
+      type="text"
+      class="form-control"
+      formControlName="phone"
+      placeholder="Phone"
+    />
+  </div>
+
+  <label for="Address" class="sr-only">Address</label>
+  <div class="input-group mb-2 mr-sm-2">
+    <input
+      type="text"
+      class="form-control"
+      formControlName="address"
+      placeholder="Address"
+    />
+  </div>
+
+  <label for="membership" class="sr-only">Membership</label>
+  <div class="input-group mb-2 mr-sm-2">
+    <select formControlName="membership" class="form-control">
+      <option>Basic</option>
+      <option>Pro</option>
+      <option>Platinum</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary mb-2">Add Customer</button>
+</form>
