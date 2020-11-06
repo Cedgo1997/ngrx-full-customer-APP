@@ -6,7 +6,7 @@ import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 
-const CUSTOMERSROUTES: Routes = [{ path: '', component: CustomerComponent }];
+const CUSTOMERSROUTES: Routes = [{ path: 'customers', component: CustomerComponent }];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(CUSTOMERSROUTES)],

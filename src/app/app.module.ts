@@ -12,6 +12,7 @@ import { CustomersModule } from './customers/customers.module';
 
 // NGRX
 import { StoreModule } from '@ngrx/store';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NavbarComponent],
@@ -19,6 +20,8 @@ import { StoreModule } from '@ngrx/store';
     BrowserModule,
     CustomersModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({}),
   ],
   providers: [],
