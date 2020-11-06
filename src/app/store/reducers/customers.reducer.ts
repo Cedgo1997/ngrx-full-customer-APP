@@ -6,28 +6,21 @@ export interface State {
   customers: CustomerModel[];
   loading: boolean;
   loaded: boolean;
+  error: any;
 }
 
 export const initialState: State = {
-  customers: [
-    {
-      name: 'John Doe',
-      phone: '9182398214216',
-      address: '123 Sun Street',
-      membership: 'Platinum',
-      id: 1,
-    },
-  ],
+  customers: [],
   loading: false,
-  loaded: true,
+  loaded: false,
+  error: null,
 };
 
-export const customersReducer = createReducer(
+export const _customersReducer = createReducer(
   initialState,
   on(customersActions.loadCustomers, (state) => ({
     ...state,
     loading: true,
-    loaded: false,
   })),
   on(customersActions.loadCustomersSuccess, (state, { customers }) => ({
     ...state,
@@ -38,11 +31,11 @@ export const customersReducer = createReducer(
   on(customersActions.loadCustomersError, (state, { payload }) => ({
     ...state,
     loading: false,
-    loaded: true,
+    loaded: false,
     error: payload,
   }))
 );
 
-export function reducer(state = initialState, action: Action) {
-  return customersReducer(state, action);
+export function customersReducer(state, action) {
+  return _customersReducer(state, action);
 }

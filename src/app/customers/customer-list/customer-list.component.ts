@@ -11,13 +11,19 @@ import * as customersActions from './../../store/actions/customers.actions';
 })
 export class CustomerListComponent implements OnInit {
   customers: CustomerModel[] = [];
+  loading: boolean = false;
+  error: any;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store
       .select('customers')
-      .subscribe(({ customers }) => (this.customers = customers));
+      .subscribe(({ customers, loading, error }) => {
+        this.customers = customers;
+        this.loading = loading;
+        this.error = error;
+      });
     this.store.dispatch(customersActions.loadCustomers());
   }
 }
