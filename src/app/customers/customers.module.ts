@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 
 //NGRX
-import { customerReducer } from './state/customer.reducer';
+import { customersReducer } from '../store/reducers/customers.reducer';
 
 // COMPONENTS
 import { CustomerComponent } from './customer/customer.component';
@@ -20,7 +20,7 @@ const CUSTOMERSROUTES: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(CUSTOMERSROUTES),
-    StoreModule.forFeature('customers', customerReducer),
+    StoreModule.forFeature('customers', customersReducer),
   ],
   declarations: [
     CustomerComponent,

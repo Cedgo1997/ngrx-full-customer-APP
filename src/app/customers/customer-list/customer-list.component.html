@@ -11,14 +11,14 @@
   </thead>
 
   <tbody>
-    <tr>
-      <th scope="row"></th>
-      <td>-</td>
-      <td>-</td>
-      <td>-</td>
+    <tr *ngFor="let customer of customers">
+      <th scope="row">{{ customer.name }}</th>
+      <td>{{ customer.phone }}</td>
+      <td>{{ customer.address }}</td>
+      <td>{{ customer.membership }}</td>
       <th>
         <a>Edit</a>
-        <br>
+        <br />
         <a>Delete</a>
       </th>
     </tr>

@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { CustomerModel } from './../customer.model';
-import * as customerActions from './customer.actions';
+import { CustomerModel } from '../../models/customer.model';
+import * as customersActions from './../actions/customers.actions';
 
 export interface State {
   customers: CustomerModel[];
@@ -22,20 +22,20 @@ export const initialState: State = {
   loaded: true,
 };
 
-const customerReducer = createReducer(
+export const customersReducer = createReducer(
   initialState,
-  on(customerActions.loadCustomer, (state) => ({
+  on(customersActions.loadCustomers, (state) => ({
     ...state,
     loading: true,
     loaded: false,
   })),
-  on(customerActions.loadCustomerSuccess, (state, { customers }) => ({
+  on(customersActions.loadCustomersSuccess, (state, { customers }) => ({
     ...state,
     loading: false,
     loaded: true,
     customers,
-  }))
-  on(customerActions.loadCustomerError, (state, { payload }) => ({
+  })),
+  on(customersActions.loadCustomersError, (state, { payload }) => ({
     ...state,
     loading: false,
     loaded: true,
@@ -44,5 +44,5 @@ const customerReducer = createReducer(
 );
 
 export function reducer(state = initialState, action: Action) {
-  return customerReducer(state, action);
+  return customersReducer(state, action);
 }
