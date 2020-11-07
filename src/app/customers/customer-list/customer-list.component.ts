@@ -17,13 +17,10 @@ export class CustomerListComponent implements OnInit {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.store
-      .select('customers')
-      .subscribe(({ customers, loading, error }) => {
-        this.customers = customers;
-        this.loading = loading;
-        this.error = error;
-      });
     this.store.dispatch(customersActions.loadCustomers());
+
+    this.store.subscribe(
+      (state) => (this.customers = state.customers.customers)
+    );
   }
 }

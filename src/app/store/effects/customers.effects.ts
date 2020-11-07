@@ -4,6 +4,7 @@ import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import * as customersActions from './../actions/customers.actions';
 import { CustomerService } from './../../services/customer.service';
+import { CustomerModel } from 'src/app/models/customer.model';
 
 @Injectable()
 export class CustomersEffects {
@@ -17,7 +18,7 @@ export class CustomersEffects {
       ofType(customersActions.loadCustomers),
       mergeMap(() =>
         this.customersService.getCustomers().pipe(
-          map((customers) =>
+          map((customers:CustomerModel[]) =>
             customersActions.loadCustomersSuccess({ customers })
           ),
           catchError((err) =>
