@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
 import { CustomerModel } from 'src/app/models/customer.model';
 import { AppState } from './../../store/app.reducers';
 import * as customersActions from './../../store/actions/customers.actions';
+
+// Selectors
+import { Store, select } from "@ngrx/store";
+import { Observable } from "rxjs";
+import * as customersSelectors from "./../../store/selectors/customers.selector";
+
 
 @Component({
   selector: 'app-customer-list',
@@ -10,17 +15,13 @@ import * as customersActions from './../../store/actions/customers.actions';
   styleUrls: ['./customer-list.component.css'],
 })
 export class CustomerListComponent implements OnInit {
-  customers: CustomerModel[] = [];
-  loading: boolean = false;
-  error: any;
+  customers$: Observable<CustomerModel[]>;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
     this.store.dispatch(customersActions.loadCustomers());
 
-    this.store.subscribe(
-      (state) => (this.customers = state.customers.customers)
-    );
+    this.customers$ = this.store.pipe( select(customersSelectors.getCostumers) )
   }
 }
