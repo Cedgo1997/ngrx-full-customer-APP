@@ -1,5 +1,8 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { customersState } from './../reducers/customers.reducer';
+import {
+  customersAdapter,
+  customersState,
+} from './../reducers/customers.reducer';
 
 const getCustomersFeatureState = createFeatureSelector<customersState>(
   'customers'
@@ -7,7 +10,7 @@ const getCustomersFeatureState = createFeatureSelector<customersState>(
 
 export const getCostumers = createSelector(
   getCustomersFeatureState,
-  (state: customersState) => state.customers
+  customersAdapter.getSelectors().selectAll
 );
 
 export const getCostumersLoading = createSelector(
