@@ -2,14 +2,14 @@ import { Action, createReducer, on } from '@ngrx/store';
 import { CustomerModel } from '../../models/customer.model';
 import * as customersActions from './../actions/customers.actions';
 
-export interface State {
+export interface customersState {
   customers: CustomerModel[];
   loading: boolean;
   loaded: boolean;
   error: any;
 }
 
-export const initialState: State = {
+export const initialState: customersState = {
   customers: [],
   loading: false,
   loaded: false,
