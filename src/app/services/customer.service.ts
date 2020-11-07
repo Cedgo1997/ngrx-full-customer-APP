@@ -20,15 +20,15 @@ export class CustomerService {
     return this.http.get(`${this.customersUrl}/${id}`);
   }
 
-  createCustomer(payload: CustomerModel) {
-    return this.http.post(this.customersUrl, payload);
+  createCustomer(customer: CustomerModel) {
+    return this.http.post(this.customersUrl, customer);
   }
 
   updateCustomer(customer: CustomerModel) {
     return this.http.patch(`${this.customersUrl}/${customer.id}`, customer);
   }
 
-  deleteCustomer(payload: number) {
-    return this.http.delete(`${this.customersUrl}/${payload}`);
+  deleteCustomer(id: number) {
+    return this.http.delete(`${this.customersUrl}/${id}`);
   }
 }
