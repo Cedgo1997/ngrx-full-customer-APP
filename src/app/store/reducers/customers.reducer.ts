@@ -44,7 +44,6 @@ export const _customersReducer = createReducer(
 
   on(customersActions.loadCustomersError, (state, { payload }) => ({
     ...state,
-    entities: {},
     loading: false,
     loaded: false,
     error: payload,

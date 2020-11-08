@@ -13,7 +13,6 @@ import { CustomersModule } from './customers/customers.module';
 
 // NGRX
 import { StoreModule } from '@ngrx/store';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { appReducers } from './store/app.reducers';
@@ -27,8 +26,6 @@ import { EffectsArray } from './store/effects/index';
     BrowserModule,
     CustomersModule,
     AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
     HttpClientModule,
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot(EffectsArray),

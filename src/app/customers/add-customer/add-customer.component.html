@@ -1,43 +1,46 @@
 <h3>Add Customer</h3>
 
-<form class="form-inline mb-4">
-  <label for="Name" class="sr-only">Name</label>
+<form [formGroup]="customerForm" class="form-inline mb-4" (ngSubmit)="createCustomer()">
   <div class="input-group mb-2 mr-sm-2">
+    <label class="sr-only">Name</label>
     <input
       type="text"
+      name="name"
       class="form-control"
       formControlName="name"
       placeholder="Name"
     />
   </div>
 
-  <label for="Phone" class="sr-only">Phone</label>
   <div class="input-group mb-2 mr-sm-2">
+    <label class="sr-only">Phone</label>
     <input
       type="text"
+      name="phone"
       class="form-control"
       formControlName="phone"
       placeholder="Phone"
     />
   </div>
 
-  <label for="Address" class="sr-only">Address</label>
   <div class="input-group mb-2 mr-sm-2">
+    <label class="sr-only">Address</label>
     <input
       type="text"
+      name="address"
       class="form-control"
       formControlName="address"
       placeholder="Address"
     />
   </div>
 
-  <label for="membership" class="sr-only">Membership</label>
   <div class="input-group mb-2 mr-sm-2">
+    <label class="sr-only">Membership</label>
     <select formControlName="membership" class="form-control">
       <option>Basic</option>
       <option>Pro</option>
       <option>Platinum</option>
     </select>
   </div>
-  <button type="submit" class="btn btn-primary mb-2">Update Customer</button>
+  <button type="submit" class="btn btn-primary mb-2" >Add Customer</button>
 </form>

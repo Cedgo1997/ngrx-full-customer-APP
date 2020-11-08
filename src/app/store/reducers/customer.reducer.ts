@@ -7,7 +7,8 @@ import * as customerActions from './../actions/customer.actions';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 export interface customerState extends EntityState<CustomerModel> {
-  selectedCustomerId: number | null;
+  id: number | null;
+  customer: CustomerModel;
   loading: boolean;
   loaded: boolean;
   error: any;
@@ -17,8 +18,9 @@ export const customerAdapter: EntityAdapter<CustomerModel> = createEntityAdapter
   CustomerModel
 >();
 
-export const initialState: customerState = customerAdapter.getInitialState({
-  selectedCustomerId: null,
+const initialState: customerState = customerAdapter.getInitialState({
+  id: null,
+  customer: null,
   loading: false,
   loaded: false,
   error: null,
@@ -31,14 +33,14 @@ const _customerReducer = createReducer(
 
   on(customerActions.loadCustomer, (state, { id }) => ({
     ...state,
-    selectedCustomerId: id,
+    id,
     loading: true,
     loaded: false,
   })),
   on(customerActions.loadCustomerSuccess, (state, { customer }) =>
     customerAdapter.setOne(customer, {
       ...state,
-      selectedCustomerId: customer.id,
+      id: customer.id,
       loading: false,
       loaded: true,
     })

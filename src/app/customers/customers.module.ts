@@ -13,6 +13,7 @@ import { CustomerComponent } from './customer/customer.component';
 import { AddCustomerComponent } from './add-customer/add-customer.component';
 import { EditCustomerComponent } from './edit-customer/edit-customer.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const CUSTOMERSROUTES: Routes = [
   { path: 'customers', component: CustomerComponent },
@@ -21,6 +22,7 @@ const CUSTOMERSROUTES: Routes = [
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     RouterModule.forChild(CUSTOMERSROUTES),
     StoreModule.forFeature('customers', customersReducer),
     EffectsModule.forFeature(EffectsArray),
