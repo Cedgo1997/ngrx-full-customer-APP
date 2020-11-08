@@ -6,7 +6,6 @@ import * as customersActions from './../actions/customers.actions';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 
 export interface customersState extends EntityState<CustomerModel> {
-  selectedCustomerId: number | null;
   loading: boolean;
   loaded: boolean;
   error: any;
@@ -19,10 +18,9 @@ export const customersAdapter: EntityAdapter<CustomerModel> = createEntityAdapte
 export const defaultCustomers: customersState = {
   ids: [],
   entities: {},
-  selectedCustomerId: null,
   loading: false,
   loaded: false,
-  error: '',
+  error: null,
 };
 
 export const initialState: customersState = customersAdapter.getInitialState(
