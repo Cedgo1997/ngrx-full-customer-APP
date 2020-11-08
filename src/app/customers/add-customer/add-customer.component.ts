@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { AppState } from 'src/app/store/app.reducers';
-import * as customerActions from './../../store/actions/customer.actions';
+
+import * as customersReducer from './../../store/reducers/customers.reducer';
+import * as customersActions from './../../store/actions/customers.actions';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerModel } from 'src/app/models/customer.model';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-add-customer',
@@ -14,7 +16,11 @@ import { CustomerModel } from 'src/app/models/customer.model';
 export class AddCustomerComponent implements OnInit {
   customerForm: FormGroup;
 
-  constructor(private store: Store<AppState>, private fb: FormBuilder) {}
+  constructor(
+    private store: Store<customersReducer.custmersAppState>,
+    private fb: FormBuilder,
+    private customerService: CustomerService
+  ) {}
 
   ngOnInit(): void {
     this.customerForm = this.fb.group({
@@ -30,7 +36,9 @@ export class AddCustomerComponent implements OnInit {
 
     const customer = new CustomerModel(name, phone, address, membership);
 
-    this.store.dispatch(customerActions.createCustomer({ customer }));
+    this.customerService.createCustomer(customer);
+
+    this.store.dispatch(customersActions.createCustomer({ customer }));
 
     this.customerForm.reset();
   }

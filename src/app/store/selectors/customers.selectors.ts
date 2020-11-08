@@ -27,3 +27,14 @@ export const getCostumersError = createSelector(
   getCustomersFeatureState,
   (state: customersState) => state.error
 );
+
+export const getCustomerId = createSelector(
+  getCustomersFeatureState,
+  (state: customersState) => state.id
+);
+
+export const getCustomer = createSelector(
+  getCustomersFeatureState,
+  getCustomerId,
+  (state: customersState) => state.entities[state.id]
+);
