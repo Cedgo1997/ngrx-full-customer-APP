@@ -1,1 +1,1 @@
-export * from './customers.selector';
+export * from './customers.selectors';

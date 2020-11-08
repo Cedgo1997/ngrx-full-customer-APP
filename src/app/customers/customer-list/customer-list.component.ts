@@ -6,7 +6,7 @@ import * as customersActions from './../../store/actions/customers.actions';
 // Selectors
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs";
-import * as customersSelectors from "./../../store/selectors/customers.selector";
+import * as customersSelectors from "../../store/selectors/customers.selectors";
 
 
 @Component({
