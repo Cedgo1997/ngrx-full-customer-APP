@@ -3,14 +3,15 @@ import { HttpClient } from '@angular/common/http';
 
 import { CustomerModel } from './../models/customer.model';
 
+import { AngularFirestore } from '@angular/fire/firestore';
+
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerService {
-  private customersUrl =
-    'http://localhost:3000/customers';
+  private customersUrl = 'http://localhost:3000/customers';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private firestore: AngularFirestore) {}
 
   getCustomers() {
     return this.http.get(`${this.customersUrl}`);

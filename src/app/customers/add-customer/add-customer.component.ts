@@ -5,6 +5,7 @@ import * as customerActions from './../../store/actions/customer.actions';
 
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CustomerModel } from 'src/app/models/customer.model';
+import { CustomerService } from 'src/app/services/customer.service';
 
 @Component({
   selector: 'app-add-customer',
@@ -26,12 +27,11 @@ export class AddCustomerComponent implements OnInit {
   }
 
   createCustomer() {
+    if (this.customerForm.invalid) {
+      return;
+    }
     const { name, phone, address, membership } = this.customerForm.value;
-
     const customer = new CustomerModel(name, phone, address, membership);
-
     this.store.dispatch(customerActions.createCustomer({ customer }));
-
-    this.customerForm.reset();
   }
 }

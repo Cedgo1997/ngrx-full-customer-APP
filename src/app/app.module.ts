@@ -11,10 +11,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomersModule } from './customers/customers.module';
 
+// FREBASE FIRESTORE
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+
 // NGRX
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { environment } from 'src/environments/environment';
 import { appReducers } from './store/app.reducers';
 
 import { EffectsModule } from '@ngrx/effects';
@@ -27,6 +32,8 @@ import { EffectsArray } from './store/effects/index';
     CustomersModule,
     AppRoutingModule,
     HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
     StoreModule.forRoot(appReducers),
     EffectsModule.forRoot(EffectsArray),
     StoreDevtoolsModule.instrument({

@@ -15,32 +15,11 @@
       "id": 2
     },
     {
-      "name": "",
-      "phone": "",
-      "address": "",
-      "membership": "",
-      "id": 3
-    },
-    {
-      "name": null,
-      "phone": null,
-      "address": null,
-      "membership": null,
-      "id": 4
-    },
-    {
-      "name": null,
-      "phone": null,
-      "address": null,
-      "membership": null,
-      "id": 5
-    },
-    {
       "name": "César",
-      "phone": "7676767",
-      "address": "dsdsds",
+      "phone": "04145089820",
+      "address": "Barinas",
       "membership": "Basic",
-      "id": 6
+      "id": 3
     }
   ]
 }
