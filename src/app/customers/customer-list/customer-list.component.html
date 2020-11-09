@@ -17,9 +17,9 @@
       <td>{{ customer.address }}</td>
       <td>{{ customer.membership }}</td>
       <th>
-        <a>Edit</a>
+        <a type="button" (click)="editCustomer(customer)" >Edit</a>
         <br />
-        <a>Delete</a>
+        <a type="button" (click)="deleteCustomer(customer)" >Delete</a>
       </th>
     </tr>
   </tbody>
