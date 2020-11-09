@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { catchError, map, mergeMap } from 'rxjs/operators';
-import { of } from 'rxjs';
-import * as customersActions from './../actions/customers.actions';
 import { CustomerService } from './../../services/customer.service';
 import { CustomerModel } from 'src/app/models/customer.model';
+
+//RXJS
+import { catchError, map, mergeMap } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { Actions, createEffect, ofType } from '@ngrx/effects';
+
+//NGRX
+import * as customersActions from './../actions/customers.actions';
+import { Update } from '@ngrx/entity';
+
 
 @Injectable()
 export class CustomersEffects {
@@ -72,10 +78,8 @@ export class CustomersEffects {
       ofType(customersActions.updateCustomer),
       mergeMap((action) =>
         this.customerService.updateCustomer(action.customer).pipe(
-          map((customer: CustomerModel) =>
-            customersActions.updateCustomerSuccess({
-              customer: { ...customer },
-            })
+          map((customer: Update<CustomerModel>) =>
+            customersActions.updateCustomerSuccess({ customer })
           ),
           catchError((err) =>
             of(customersActions.updateCustomerError({ payload: err }))

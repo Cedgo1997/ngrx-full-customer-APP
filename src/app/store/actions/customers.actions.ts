@@ -1,3 +1,4 @@
+import { Update } from '@ngrx/entity';
 import { createAction, props } from '@ngrx/store';
 import { CustomerModel } from '../../models/customer.model';
 
@@ -52,7 +53,7 @@ export const updateCustomer = createAction(
 
 export const updateCustomerSuccess = createAction(
   '[Customer] Update Success',
-  props<{ customer: CustomerModel }>()
+  props<{ customer: Update<CustomerModel> }>()
 );
 export const updateCustomerError = createAction(
   '[Customer] Update Error',

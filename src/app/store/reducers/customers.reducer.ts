@@ -1,9 +1,16 @@
-import { createReducer, on } from '@ngrx/store';
 import { CustomerModel } from '../../models/customer.model';
+
+//NGRX
+import { createReducer, on } from '@ngrx/store';
 import * as customersActions from './../actions/customers.actions';
 
 // ENTITIES
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import {
+  EntityState,
+  EntityAdapter,
+  createEntityAdapter,
+  Update,
+} from '@ngrx/entity';
 import { AppState } from '../app.reducers';
 
 export interface customersState extends EntityState<CustomerModel> {
@@ -56,32 +63,41 @@ export const _customersReducer = createReducer(
 
 //LOAD
 
-on(
-  customersActions.loadCustomerSuccess,
-  (state: customersState, { customer }) =>
-    customersAdapter.addOne(customer, {
-      ...state,
-      id: customer.id,
-      loading: false,
-      loaded: true,
-    })
-),
+on(customersActions.loadCustomer, (state: customersState, { id }) => ({
+  ...state,
+  id,
+})),
+  on(
+    customersActions.loadCustomerSuccess,
+    (state: customersState, { customer }) =>
+      customersAdapter.addOne(customer, {
+        ...state,
+      })
+  ),
   on(
     customersActions.loadCustomerError,
     (state: customersState, { payload }) => ({
       ...state,
-      loading: false,
-      loaded: false,
       error: payload,
     })
   ),
   //CREATE
 
   on(
-    customersActions.createCustomerSuccess,
-    (state: customersState, { customer }) =>
-      customersAdapter.addOne(customer, state)
+    customersActions.createCustomer,
+    (state: customersState, { customer }) => ({
+      ...state,
+      customer,
+      loading: true,
+      loaded: false,
+    })
   );
+
+on(
+  customersActions.createCustomerSuccess,
+  (state: customersState, { customer }) =>
+    customersAdapter.addOne(customer, { ...state })
+);
 
 on(
   customersActions.createCustomerError,
@@ -96,10 +112,7 @@ on(
 on(
   customersActions.updateCustomerSuccess,
   (state: customersState, { customer }) =>
-    customersAdapter.updateOne(
-      { id: customer.id, changes: customer },
-      { ...state }
-    )
+    customersAdapter.updateOne(customer, state)
 );
 
 on(
