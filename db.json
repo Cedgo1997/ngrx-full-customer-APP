@@ -1,19 +1,60 @@
 {
-  "posts": [
+  "customers": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
-    }
-  ],
-  "comments": [
+      "name": "John Doe",
+      "phone": "9182398214216",
+      "address": "123 Sun Street",
+      "membership": "Platinum",
+      "id": 1
+    },
     {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
+      "name": "Mary Johnson",
+      "phone": "91823982132423",
+      "address": "893 Main Voulevard",
+      "membership": "Pro",
+      "id": 2
+    },
+    {
+      "name": "César",
+      "phone": "545",
+      "address": "ggg",
+      "membership": "Basic",
+      "id": 3
+    },
+    {
+      "name": null,
+      "phone": null,
+      "address": null,
+      "membership": null,
+      "id": 4
+    },
+    {
+      "name": null,
+      "phone": null,
+      "address": null,
+      "membership": null,
+      "id": 5
+    },
+    {
+      "name": null,
+      "phone": null,
+      "address": null,
+      "membership": null,
+      "id": 6
+    },
+    {
+      "name": null,
+      "phone": null,
+      "address": null,
+      "membership": null,
+      "id": 7
+    },
+    {
+      "name": null,
+      "phone": null,
+      "address": null,
+      "membership": null,
+      "id": 8
     }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
