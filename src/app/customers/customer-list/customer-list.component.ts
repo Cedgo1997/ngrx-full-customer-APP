@@ -4,10 +4,9 @@ import { AppState } from './../../store/app.reducers';
 import * as customersActions from './../../store/actions/customers.actions';
 
 // Selectors
-import { Store, select } from "@ngrx/store";
-import { Observable } from "rxjs";
-import * as customersSelectors from "../../store/selectors/customers.selectors";
-
+import { Store, select } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import * as customersSelectors from '../../store/selectors/customers.selectors';
 
 @Component({
   selector: 'app-customer-list',
@@ -22,6 +21,16 @@ export class CustomerListComponent implements OnInit {
   ngOnInit(): void {
     this.store.dispatch(customersActions.loadCustomers());
 
-    this.customers$ = this.store.pipe( select(customersSelectors.getCostumers) )
+    this.customers$ = this.store.pipe(select(customersSelectors.getCostumers));
+  }
+
+  editCustomer(customer: CustomerModel) {
+    this.store.dispatch(customersActions.loadCustomer({ id: customer.id }));
+  }
+
+  deleteCustomer(customer: CustomerModel) {
+    if (confirm('Do you really want to delete this customer?')) {
+      this.store.dispatch(customersActions.deleteCustomer({ id: customer.id }));
+    }
   }
 }
