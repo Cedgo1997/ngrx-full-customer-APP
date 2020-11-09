@@ -8,7 +8,7 @@ import { CustomerModel } from './../models/customer.model';
 })
 export class CustomerService {
   private customersUrl =
-    'https://my-json-server.typicode.com/Cedgo1997/json-api/customers';
+    'http://localhost:3000/customers';
 
   constructor(private http: HttpClient) {}
 
